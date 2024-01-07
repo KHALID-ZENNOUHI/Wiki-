@@ -1,0 +1,2 @@
+<?php
+echo "HELLO WORLD THE ROUTER WORK!";
