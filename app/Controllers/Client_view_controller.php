@@ -1,6 +1,6 @@
 <?php
-namespace App\Client_view_controller;
-use ViewController;
+namespace App\Controllers;
+use App\Controllers\ViewController;
 
 class Client_view_controller extends ViewController{
 

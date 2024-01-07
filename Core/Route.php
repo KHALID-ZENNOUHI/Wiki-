@@ -3,10 +3,10 @@ namespace Core;
 
 class Route{
 
-    public $route = [];
+    public $routes = [];
 
-    public function add($mthod, $uri, $controller, $action){
-        $this->route[] = compact('method', 'uri', 'controller', 'action');
+    public function add($method, $uri, $controller, $action){
+        $this->routes[] = compact('method', 'uri', 'controller', 'action');
     }
 
     public function get($uri, $controller, $action){
@@ -18,12 +18,18 @@ class Route{
     }
 
     public function check($uri, $method){
-        foreach ($this->route as $router) {
-            if ($router['uri'] === $uri && $router['method'] === strtoupper($method)) {
-                return $router;
+        foreach ($this->routes as $route) {
+            // Trim slashes for comparison
+            $routeUri = trim($route['uri'], '/');
+            $requestedUri = trim($uri, '/');
+    
+            if ($routeUri === $requestedUri && $route['method'] === strtoupper($method)) {
+                return $route;
             }
         }
-        throw new \Exception('No route defined for this URI!');
+        // throw new \Exception('No route defined for this URI!');
+        return null; // Return null if no matching route is found
     }
+    
 
 }
