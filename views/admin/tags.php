@@ -73,8 +73,8 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="d-flex justify-content-between">
-                            <h3 class="title-5 m-b-35">data SubCategory</h3>
-                            <a href="#addsubcategoryModal" class="btn btn-success m-b-35" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New SubCategory</span></a>
+                            <h3 class="title-5 m-b-35">Tags</h3>
+                            <a href="#addModal" class="btn btn-success m-b-35" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Tags</span></a>
                         </div>
                         <div class="row">
                         <table class="table table-borderless table-data3">
@@ -84,48 +84,24 @@
                                 <th>Action</th>
                                 </tr>
                             </thead>
+                            <?php foreach ($tags as $tag) {?>
                             <tbody>
                                 <tr>
-                                <td></td>
+                                <td><?= $tag->tag?></td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <a href="#Edittag" class="edit" data-toggle="modal"><button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <a href="#Edittag<?= $tag->id?>" class="edit" data-toggle="modal"><button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="zmdi zmdi-edit"></i>
                                         </button></a>
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <a href="" class="delete"><i class="zmdi zmdi-delete"></i></a>
+                                        <a href="/deletetag?id=<?= $tag->id?>" class="delete"><i class="zmdi zmdi-delete"></i></a>
                                         </button>
                                     </div>
                                 </td>
                                 </tr>
-                                <!-- Edit Modal  -->
-                                <div id="Edittag" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <form method="POST">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Category</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label>subcategory</label>
-                                                        <input type="text" name="subcategoryName" value = '' class="form-control" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Category</label>
-                                                        <input type="text" name = "tag">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                    <input type="submit" name="editsubcategory" class="btn btn-success" value="Edit">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </tbody>
+                            <?php } ?>
                         </table>
                         </div>
                         <div class="row">
@@ -142,10 +118,10 @@
 
     </div>
 <!-- Add Modal  -->
-<div id="addsubcategoryModal" class="modal fade">
+<div id="addModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST">
+            <form method="POST" action = "/addtag">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Tags</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -153,19 +129,44 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tags</label>
-                        <input type="text" name="subcategoryName" class="form-control" required>
+                        <input type="text" name="tag" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" name="addsubcategory" class="btn btn-success" value="Add">
+                    <input type="submit" class="btn btn-success">
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-
+<!-- Edit Modal  -->
+<?php foreach ($tags as $tag) {?>
+<div id="Edittag<?= $tag->id?>" class="modal fade">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form method="POST" action = "/updatetag">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Tags</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tag</label>
+                    <input type="text" value = "<?= $tag->tag?>" name="tag" class="form-control" required>
+                    <input type="hidden" value = "<?= $tag->id?>" name="id" class="form-control" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success">
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<?php } ?>
     <!-- Jquery JS-->
     <script src="assets/assetsAdmin/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->

@@ -15,8 +15,7 @@ try {
     echo "404 Page Not Found: " . $e->getMessage();
     exit;
 }
-// dump($router['controller']);
-// die();
+
 $controller = new $router['controller']();
 $action = $router['action'];
 $controller->$action();

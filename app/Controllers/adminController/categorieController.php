@@ -11,11 +11,9 @@ class categorieController extends homeController
         $this->categorie = new categorie();
     }
 
-    public function dispaly()
+    public function display()
     {
         $categories = $this->categorie->display();
-        // dump($categories);
-        // die();
         $this->render('admin/categories', ['categories' => $categories]);
 
     }
