@@ -13,22 +13,22 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="index.php">Dashboard 1</a>
+                                    <a href="dashboard">Dashboard 1</a>
                                 </li>
                             
                             </ul>
                         </li>
                         <li>
-                            <a href="ressources.php">
-                                <i class="fas fa-chart-bar"></i>Ressources</a>
+                            <a href="categories">
+                                <i class="fas fa-chart-bar"></i>Categories</a>
                         </li>
                         <li>
-                            <a href="table.php">
-                                <i class="fas fa-table"></i>Users</a>
+                            <a href="/tags">
+                                <i class="fas fa-table"></i>Tags</a>
                         </li>
                         <li>
                             <a href="category.php">
-                                <i class="far fa-check-square"></i>Category</a>
+                                <i class="far fa-check-square"></i>Wikis</a>
                         </li>
                         <li>
                             <a href="subcategory.php">

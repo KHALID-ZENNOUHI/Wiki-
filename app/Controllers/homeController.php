@@ -17,4 +17,12 @@ class homeController extends controller
     {
         $this->render('login');
     }
+    public function categories()
+    {
+        $this->render('admin/categories');
+    }
+    public function tags()
+    {
+        $this->render('admin/tags');
+    }
 }

@@ -15,6 +15,13 @@ class AuthController extends homeController
     public function login()
     {
         extract($_POST);
+        $nameRegix = '/^[a-zA-Z]{5,}$/';
+        $emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
+        if (!preg_match($emailRegex, $email) && !preg_match($nameRegix,$name)) {
+            $_SESSION['error'] = "Invalid name or email format";
+            $this->render('login');
+            return;
+        }
         $login = $this->user->getUserByEmail($email, $password);
         if ($login && password_verify($password,$login->password)) {
             $_SESSION['id'] = $login->password;
@@ -34,6 +41,13 @@ class AuthController extends homeController
     public function register()
     {
         extract($_POST);
+        $nameRegix = '/^[a-zA-Z]{5,}$/';
+        $emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
+        if (!preg_match($emailRegex, $email) && !preg_match($nameRegix,$name)) {
+            $_SESSION['error'] = "Invalid name or email format";
+            $this->render('register');
+            return;
+        }
         $register = $this->user->getUserByEmail($email, $password);
         if ($register) {
             $_SESSION['error'] = "this email is already existed";

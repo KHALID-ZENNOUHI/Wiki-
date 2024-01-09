@@ -13,28 +13,28 @@
     <title>Calendar</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
-    <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- assets/assetsAdmin/Vendor CSS-->
+    <link href="assets/assetsAdmin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- FullCalendar -->
-    <link href='vendor/fullcalendar-3.10.0/fullcalendar.css' rel='stylesheet' media="all" />
+    <link href='assets/assetsAdmin/vendor/fullcalendar-3.10.0/fullcalendar.css' rel='stylesheet' media="all" />
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="assets/assetsAdmin/css/theme.css" rel="stylesheet" media="all">
 
     <style type="text/css">
     /* force class color to override the bootstrap base rule
@@ -77,37 +77,54 @@
                             <a href="#addsubcategoryModal" class="btn btn-success m-b-35" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New SubCategory</span></a>
                         </div>
                         <div class="row">
-                        <table class="table table-success table-striped">
+                        <table class="table table-borderless table-data3">
                             <thead>
                                 <tr>
-                                <th scope="col">Subcategory</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Action</th>
+                                <th>Tags</th>
+                                <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                require 'connection.php';
-                                $querysub = "SELECT * FROM subcategory natural join category;";
-                                $sqliquerysub = mysqli_query($conn,$querysub);
-                                while($row = mysqli_fetch_assoc($sqliquerysub)){
-                                $subcategoryid = $row['SubcategoryID'];  
-                                ?>
                                 <tr>
-                                <td><?php echo $row['subcategoryNom'];?></td>
-                                <td><?php echo $row['CategoryNom'];?></td>
+                                <td></td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <a href="#EditsubcategoryModal<?php echo $subcategoryid ?>" class="edit" data-toggle="modal"><button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <a href="#Edittag" class="edit" data-toggle="modal"><button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="zmdi zmdi-edit"></i>
                                         </button></a>
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <a href="subcategory.php?idsubcategory=<?php echo $subcategoryid?>" class="delete"><i class="zmdi zmdi-delete"></i></a>
+                                        <a href="" class="delete"><i class="zmdi zmdi-delete"></i></a>
                                         </button>
                                     </div>
                                 </td>
                                 </tr>
-                                <?php } ?>
+                                <!-- Edit Modal  -->
+                                <div id="Edittag" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form method="POST">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Edit Category</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>subcategory</label>
+                                                        <input type="text" name="subcategoryName" value = '' class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Category</label>
+                                                        <input type="text" name = "tag">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                    <input type="submit" name="editsubcategory" class="btn btn-success" value="Edit">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </tbody>
                         </table>
                         </div>
@@ -124,32 +141,19 @@
         </div>
 
     </div>
-<!-- Add SubCategories Modal  -->
+<!-- Add Modal  -->
 <div id="addsubcategoryModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="POST">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Subcategories</h4>
+                    <h4 class="modal-title">Add Tags</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>subcategory</label>
+                        <label>Tags</label>
                         <input type="text" name="subcategoryName" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-select form-select-lg mb-3 form-control" aria-label="Large select example" name="CategoryID">
-                            <option selected>Choose a category</option>
-                            <?php
-                            $querycategory = "SELECT * FROM category;";
-                            $conncategory = mysqli_query($conn, $querycategory);
-                            while ($row = mysqli_fetch_assoc($conncategory)) {
-                                echo "<option value='{$row['CategoryID']}'>{$row['CategoryNom']}</option>";
-                            }
-                            ?>
-                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -160,79 +164,34 @@
         </div>
     </div>
 </div>
-<!-- Edit Categories Modal  -->
-<?php 
-    require 'connection.php';
-    $querysub = "SELECT * FROM subcategory natural join category;";
-    $sqliquerysub = mysqli_query($conn,$querysub);
-    while($row = mysqli_fetch_assoc($sqliquerysub)){
-    $subcategoryid = $row['SubcategoryID'];  
-    $categoryid = $row['CategoryID'];
-?>
-<div id="EditsubcategoryModal<?php echo $subcategoryid ?>" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="POST">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Category</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>subcategory</label>
-                        <input type="text" name="subcategoryName" value = '<?php echo $row['subcategoryNom'];?>' class="form-control" required>
-                        <input type="hidden" name="idsubcategory" value = '<?php echo $subcategoryid;?>' >
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-select form-select-lg mb-3 form-control" aria-label="Large select example" name="CategoryID">
-                            <?php
-                            $querycategory = "SELECT * FROM category;";
-                            $conncategory = mysqli_query($conn, $querycategory);
-                            while ($row = mysqli_fetch_assoc($conncategory)) {
-                                ?>
-                                <option value="<?php echo $row['CategoryID']?>" <?php if($row['CategoryID'] == $categoryid) echo "selected";?>><?php echo $row['CategoryNom']?></option>
-                            <?php }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" name="editsubcategory" class="btn btn-success" value="Edit">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<?php } ?>   
+
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
+    <script src="assets/assetsAdmin/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- assets/assetsAdmin/Vendor JS       -->
+    <script src="assets/assetsAdmin/vendor/slick/slick.min.js">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="assets/assetsAdmin/vendor/wow/wow.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/animsition/animsition.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="assets/assetsAdmin/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/counter-up/jquery.counterup.min.js">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="assets/assetsAdmin/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/select2/select2.min.js"></script>
 
     <!-- full calendar requires moment along jquery which is included above -->
-    <script src="vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
-    <script src="vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
+    <script src="assets/assetsAdmin/vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
+    <script src="assets/assetsAdmin/vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="assets/assetsAdmin/js/main.js"></script>
 
     <script type="text/javascript">
 $(function() {
