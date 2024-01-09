@@ -45,13 +45,16 @@
                             <a href="#">
                                 <!-- <img src="assets/assetsAdmin/images/icon/logo.png" alt=""> -->
                                 <h1>Wiki™</h1>
+                                <?php if(!empty($_SESSION['error'])){?>
+                                    <h1><?php echo $_SESSION['error'];?></h1>
+                                <?php } ?>                               
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="/register" method="POST">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
@@ -70,7 +73,7 @@
                                         <input type="checkbox" name="aggree">Agree the terms and policy
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name = "register">register</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
@@ -81,7 +84,7 @@
                             <div class="register-link">
                                 <p>
                                     Already have account?
-                                    <a href="#">Sign In</a>
+                                    <a href="/login">Sign In</a>
                                 </p>
                             </div>
                         </div>

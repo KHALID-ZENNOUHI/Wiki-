@@ -13,4 +13,8 @@ class homeController extends controller
     {
         $this->render('register');
     }
+    public function login()
+    {
+        $this->render('login');
+    }
 }

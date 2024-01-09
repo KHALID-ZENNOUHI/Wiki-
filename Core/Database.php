@@ -1,10 +1,12 @@
 <?php
+namespace Core;
 use PDO;
 use PDOException;
 
 class Database{
     private $conn;
     private static $instance = null;
+    private $stm;
 
     private function __construct(){
         $this->connect();
@@ -26,4 +28,13 @@ class Database{
         }
         return self::$instance;
     }
+
+    public function getPDO() {
+        return $this->conn;
+    }
+    // public function query($sql)
+    // {
+    //     $this->stm = $this->conn->prepare($sql);
+    //     return $this;
+    // }
 }
