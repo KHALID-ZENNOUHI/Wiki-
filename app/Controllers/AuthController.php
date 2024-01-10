@@ -24,7 +24,7 @@ class AuthController extends homeController
         }
         $login = $this->user->getUserByEmail($email, $password);
         if ($login && password_verify($password,$login->password)) {
-            $_SESSION['id'] = $login->password;
+            $_SESSION['id'] = $login->id;
             $_SESSION['name'] = $login->name;
             $_SESSION['role'] = $login->role;
             if ($login->role === "auteur") {
@@ -64,6 +64,6 @@ class AuthController extends homeController
 
     public function logout(){
         session_destroy();
-        $this->render('login');
+        $this->render('clients/home');
     }
 }

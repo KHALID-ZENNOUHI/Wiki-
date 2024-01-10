@@ -2,7 +2,7 @@
 <header id="header">
 		<a href="" class="logo"><strong>Wiki™</strong></a>
 		<section action="#" method="get" class="search">
-		<h2>Find Your Dream Job</h2>
+		<h2>Find Your Articles</h2>
 		<form  style = "display : flex; justify-content: space-around;	">
 			<div class="form-group mb-2">
 				<input type="text" name="Articles" placeholder="Articles">

@@ -1,18 +1,12 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Wiki™</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<!--[if lte IE 8]><script src="assets/assetsClient/js/ie/html5shiv.js"></script><![endif]-->
+
 		<link rel="stylesheet" href="assets/assetsClient/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/assetsClient/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/assetsClient/css/ie8.css" /><![endif]-->
+		<script src="sweetalert2.all.min.js"></script>
 	</head>
 	<body>
 
@@ -29,6 +23,7 @@
 							<!-- Banner -->
 								<section id="banner">
 									<div class="content">
+										<?php if (!isset($_SESSION['id'])) {?>
 										<header>
 											<h1>Hi, I’m Editorial<br />
 											by HTML5 UP</h1>
@@ -38,6 +33,17 @@
 										<ul class="actions">
 											<li><a href="register" class="button big">Register</a></li>
 										</ul>
+										<?php }else{?>
+										<header>
+										<h1>Hi, <?= $_SESSION['name'] ?><br />
+										Author</h1>
+										<p>Unlock the power of your expertise!</p>
+										</header>
+										<p>Share your insights and contribute an article to our website's wiki – a platform where your knowledge can make a lasting impact.</p>
+										<ul class="actions">
+											<li><a href="viewWikiadd" class="button big">Add New Wikis</a></li>
+										</ul>	
+										<?php }?>
 									</div>
 									<span class="image object">
 										<img src="assets/assetsClient/images/pic10.jpg" alt="" />

@@ -26,7 +26,7 @@ class Wiki
         $stm->bindValue(':contenue', $contenue, PDO::PARAM_STR);
         $stm->bindValue(':id_user', $_SESSION['id'], PDO::PARAM_INT);
         $stm->bindValue(':id_categorie', $idCategorie, PDO::PARAM_INT);
-        $stm->bindValue(':create_at', getdate(Y-M-D), PDO::PARAM_Date);
+        $stm->bindValue(':create_at', date('Y-m-d'), PDO::PARAM_STR);
         $stm->bindValue(':image_path', $image, PDO::PARAM_STR);
         $stm->execute();
     }
@@ -39,7 +39,7 @@ class Wiki
         $stm->bindValue(':description', $description, PDO::PARAM_STR);
         $stm->bindValue(':contenue', $contenue, PDO::PARAM_STR);
         $stm->bindValue(':id_categorie', $idCategorie, PDO::PARAM_INT);
-        $stm->bindValue(':update_at', getdate(Y-M-D), PDO::PARAM_Date);
+        $stm->bindValue(':update_at', date('Y-m-d'), PDO::PARAM_STR);
         $stm->bindValue(':image_path', $image, PDO::PARAM_STR);
         $stm->execute();
     }
