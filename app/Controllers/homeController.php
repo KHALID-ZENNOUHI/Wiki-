@@ -3,13 +3,30 @@ namespace App\Controllers;
 use App\Controllers\controller;
 use App\Models\categorie;
 use App\Models\tag;
+use App\Models\wiki;
 
 class homeController extends controller
 {
-    
+    public $wiki;
+    public $categories;
+    public $tags;
+    public function __construct()
+    {
+        $this->wiki = new wiki();
+        $this->categories = new categorie();
+        $this->tags = new tag();
+    }
+
     public function home()
     {
-        $this->render('clients/home');
+        if (isset($_SESSION['id'])) {
+            $wikis = $this->wiki->displayById();
+        }else {
+            $wikis = $this->wiki->display();
+            // dump($wikis);
+            // die();
+        }
+        $this->render('clients/home', ['wikis' => $wikis]);
     }
     public function register()
     {
@@ -29,10 +46,8 @@ class homeController extends controller
     }
     public function viewWikiadd()
     {
-        $Ocategories = new categorie();
-        $Otags = new tag();
-        $categories = $Ocategories->display();
-        $tags = $Otags->display();
+        $categories = $this->categories->display();
+        $tags = $this->tags->display();
         $this->render('clients/wikiadd', ['categories' => $categories, 'tags' => $tags]);
     }
 }

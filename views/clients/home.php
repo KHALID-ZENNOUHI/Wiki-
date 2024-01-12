@@ -25,13 +25,13 @@
 									<div class="content">
 										<?php if (!isset($_SESSION['id'])) {?>
 										<header>
-											<h1>Hi, I’m Editorial<br />
-											by HTML5 UP</h1>
-											<p>A free and fully responsive site template</p>
+											<h1>Hi, Welcome in <br />
+											Wiki™</h1>
+											<p>Unlock the power of your expertise!</p>
 										</header>
-										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+										<p>Share your insights and contribute an article to our website's Wiki™ – a platform where your knowledge can make a lasting impact.</p>
 										<ul class="actions">
-											<li><a href="register" class="button big">Register</a></li>
+											<li><a href="register" class="button big">SignUp</a></li>
 										</ul>
 										<?php }else{?>
 										<header>
@@ -46,12 +46,12 @@
 										<?php }?>
 									</div>
 									<span class="image object">
-										<img src="assets/assetsClient/images/pic10.jpg" alt="" />
+										<img src="assets/assetsClient/images/2000px-Wikipedia-logo-v2-en-S-ezgif.com-webp-to-jpg-converter.jpg" alt="" />
 									</span>
 								</section>
 
 							<!-- Section -->
-								<section>
+								<!-- <section>
 									<header class="major">
 										<h2>Erat lacinia</h2>
 									</header>
@@ -85,62 +85,27 @@
 											</div>
 										</article>
 									</div>
-								</section>
+								</section> -->
 
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Ipsum sed dolor</h2>
+										<h2>Articles</h2>
 									</header>
 									<div class="posts">
-										<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/pic01.jpg" alt="" /></a>
-											<h3>Interdum aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										<?php 
+										if (isset($wikis)) {
+											foreach ($wikis as $wiki) {?>
+											<article>
+											<a href="#" class="image"><img src="assets/assetsClient/images/<?= $wiki->image_path?>" idth="416" height="256" alt="" /></a>
+											<h3><?= $wiki->title?></h3>
+											<p><?= $wiki->description?></p>
 											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
+												<li><a href="/wikicontent" class="button">More</a></li>
 											</ul>
 										</article>
-										<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/pic02.jpg" alt="" /></a>
-											<h3>Nulla amet dolore</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/pic03.jpg" alt="" /></a>
-											<h3>Tempus ullamcorper</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/pic04.jpg" alt="" /></a>
-											<h3>Sed etiam facilis</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/pic05.jpg" alt="" /></a>
-											<h3>Feugiat lorem aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/pic06.jpg" alt="" /></a>
-											<h3>Amet varius aliquam</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
+										<?php }}else{?>
+										<?php }?>
 									</div>
 								</section>
 

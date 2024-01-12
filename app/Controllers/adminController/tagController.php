@@ -14,7 +14,7 @@ class tagController extends homeController
     public function display()
     {
         $tags = $this->tag->display();
-        $this->render('/tags',['tags' => $tags]);
+        $this->render('admin/tags',['tags' => $tags]);
     }
 
     public function add()

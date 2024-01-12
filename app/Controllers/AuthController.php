@@ -2,14 +2,17 @@
 namespace App\Controllers;
 use App\Models\user;
 use App\Controllers\homeController;
+use App\Models\wiki;
 
 class AuthController extends homeController
 {
     public $user;
+    public $wiki;
 
     public function __construct()
     {
         $this->user = new user();
+        $this->wiki = new wiki();
     }
 
     public function login()
@@ -28,7 +31,8 @@ class AuthController extends homeController
             $_SESSION['name'] = $login->name;
             $_SESSION['role'] = $login->role;
             if ($login->role === "auteur") {
-                $this->render('clients/home');
+                $wikis = $this->wiki->displayById();
+                $this->render('clients/home',['wikis'=> $wikis]);
             }else {
                 $this->render('admin/dashboard');
             }
@@ -64,6 +68,7 @@ class AuthController extends homeController
 
     public function logout(){
         session_destroy();
-        $this->render('clients/home');
+        $wikis = $this->wiki->display();
+        $this->render('clients/home',['wikis'=> $wikis]);
     }
 }

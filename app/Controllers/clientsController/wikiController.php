@@ -60,15 +60,16 @@ class wikiController extends homeController
     }
 
     public function add()
-    {
+            {   
         extract($_POST);
         $image = $this->uploadImage();
-        $this->wiki->add($title, $description, $contenue, $categorieId, $image);
-        foreach ($tagId as $id) {
-            $this->wiki_tag->add($id);
-        }
+        $tagIds = is_array($tagId) ? $tagId : [$tagId]; // Ensure $tagId is an array
+
+        $this->wiki->add($title, $description, $contenue, $categorieId, $image, $tagIds);
+
         header('location:/viewWikiadd');
     }
+
 
     public function update()
     {
