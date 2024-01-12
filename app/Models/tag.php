@@ -39,4 +39,11 @@ class tag
         $stm->bindValue(':id', $id, PDO::PARAM_INT);
         $stm->execute();
     }
+
+    public function countTag()
+    {
+        $stm = $this->db->getPDO()->query("SELECT COUNT(id) FROM `tags`");
+        $stm->execute();
+        return $stm->fetch(PDO::FETCH_OBJ);
+    }
 }

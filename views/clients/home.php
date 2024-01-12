@@ -101,7 +101,7 @@
 											<h3><?= $wiki->title?></h3>
 											<p><?= $wiki->description?></p>
 											<ul class="actions">
-												<li><a href="/wikicontent" class="button">More</a></li>
+												<li><a href="/wikicontent?id=<?= $wiki->id?>" class="button">More</a></li>
 											</ul>
 										</article>
 										<?php }}else{?>

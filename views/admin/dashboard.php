@@ -73,7 +73,7 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                            <?php echo '<h2>'.$resultcountuser['COUNT(UserID)'].'</h2>' ?>
+                                            <h2><?= $userCount->{'COUNT(id)'}?></h2>
                                                 <span>Users</span>
                                             </div>
                                         </div>
@@ -91,8 +91,8 @@
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
                                             <div class="text">
-                                                <?php echo '<h2>' .$resultcountressource['COUNT(ResourceID)']. '</h2>' ?>
-                                                <span>Ressources</span>
+                                                <h2><?= $wikiCount->{'COUNT(id)'}?></h2>
+                                                <span>Wikis</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -109,8 +109,8 @@
                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
                                             <div class="text">
-                                                <?php echo '<h2>' .$resultcountcategory['COUNT(CategoryID)']. '</h2>'?>
-                                                <span>Category</span>
+                                                <h2><?= $categorieCount->{'COUNT(id)'}?></h2>
+                                                <span>Categories</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -127,8 +127,8 @@
                                                 <i class="zmdi zmdi-money"></i>
                                             </div>
                                             <div class="text">
-                                                <?php echo '<h2>' .$resultcountsubcategory['COUNT(SubcategoryID)']. '</h2>'?>
-                                                <span>Subcategory</span>
+                                                <h2><?= $tagCount->{'COUNT(id)'} ?></h2>
+                                                <span>Tags</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">

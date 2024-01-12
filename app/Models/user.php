@@ -29,4 +29,11 @@ class user
         $stm->execute();
     }
 
+    public function countUser()
+    {
+        $stm = $this->db->getPDO()->prepare("SELECT COUNT(id) FROM users");
+        $stm->execute();
+        return $stm->fetch(PDO::FETCH_OBJ);
+    }
+
 }

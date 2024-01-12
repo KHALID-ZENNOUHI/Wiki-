@@ -24,7 +24,9 @@ $route->post('/updatetag', tagController::class, 'update');
 $route->get('/deletetag', tagController::class, 'delete');
 $route->get('/viewWikiadd', homeController::class, 'viewWikiadd');
 $route->post('/addwiki', wikiController::class, 'add');
-
+$route->post('/editwiki', wikiController::class, 'update');
+$route->get('/wikicontent', homeController::class, 'wikicontent');
+$route->get('/dashboard', homeController::class, 'dashboard');
 
 
 

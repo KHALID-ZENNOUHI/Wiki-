@@ -3,16 +3,22 @@ namespace App\Controllers;
 use App\Models\user;
 use App\Controllers\homeController;
 use App\Models\wiki;
+use App\Models\tag;
+use App\Models\categorie;
 
 class AuthController extends homeController
 {
     public $user;
     public $wiki;
+    public $tag;
+    public $categorie;
 
     public function __construct()
     {
         $this->user = new user();
         $this->wiki = new wiki();
+        $this->tag = new tag();
+        $this->categorie = new categorie();
     }
 
     public function login()
@@ -31,10 +37,14 @@ class AuthController extends homeController
             $_SESSION['name'] = $login->name;
             $_SESSION['role'] = $login->role;
             if ($login->role === "auteur") {
-                $wikis = $this->wiki->displayById();
+                $wikis = $this->wiki->displayByIdUser();
                 $this->render('clients/home',['wikis'=> $wikis]);
             }else {
-                $this->render('admin/dashboard');
+                $wikiCount = $this->wiki->countWiki();
+                $categorieCount = $this->categorie->countCategorie();
+                $tagCount = $this->tag->countTag();
+                $userCount = $this->user->countUser();
+                $this->render('admin/dashboard', ['wikiCount' => $wikiCount, 'userCount' => $userCount, 'tagCount' => $tagCount, 'categorieCount' => $categorieCount]);
             }
         }else {
             $_SESSION['error'] = "Your email or password is incorrect";

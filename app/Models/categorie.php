@@ -42,4 +42,10 @@ class Categorie
         $stm->execute();
     }
 
+    public function countCategorie()
+    {
+        $stm = $this->db->getPDO()->query("SELECT COUNT(id) FROM `categories`");
+        $stm->execute();
+        return $stm->fetch(PDO::FETCH_OBJ);
+    }
 }

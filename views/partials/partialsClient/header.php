@@ -1,8 +1,9 @@
 <!-- Header -->
 <header id="header">
-		<a href="" class="logo"><strong>Wiki™</strong></a>
-		<!-- <section action="#" method="get" class="search">
-		<h2>Find Your Articles</h2>
+		<a href="" class="logo">
+		<strong>Wiki™</strong></a>
+		<section action="#" method="get" class="search">
+		<!-- <h2>Find Your Articles</h2> -->
 		<form  style = "display : flex; justify-content: space-around;	">
 			<div class="form-group mb-2">
 				<input type="text" name="Articles" placeholder="Articles">
@@ -15,13 +16,13 @@
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">Search</button>
 		</form>
-	</section> -->
+	</section>
 	<!-- Search -->
-		<section id="search" class="alt">
+		<!-- <section id="search" class="alt">
 			<form method="post" action="#">
 				<input type="text" name="query" id="query" placeholder="Search" />
 			</form>
-		</section>
+		</section> -->
 		<ul class="icons">
 			<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 			<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>

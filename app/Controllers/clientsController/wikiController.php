@@ -75,9 +75,9 @@ class wikiController extends homeController
     {
         extract($_POST);
         $image = $this->uploadImage();
-        $this->wiki->update($id, $title, $description, $contenue, $idCategorie, $image);
+        $this->wiki->update($idWiki, $title, $description, $contenue, $idCategorie, $image);
         foreach ($tagId as $id) {
-            $this->wiki_tag->update($id);
+            $this->wiki_tag->update($idWiki, $id);
         }
         header('location:/viewWikiadd');
     }

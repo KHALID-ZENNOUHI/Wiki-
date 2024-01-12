@@ -50,6 +50,55 @@
                         <header class="major">
                             <h2>Add New Article</h2>
                         </header>
+                        <?php if (isset($_GET['id'])) {?>
+                        <form action="editwiki" method="POST" enctype="multipart/form-data" autocomplete="off">
+                            <div class="form-group">
+                                <label for="articleTitle">Article Title:</label>
+                                <input type="text" name="title" value = "<?=$wiki->title?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleDescription">Article Description:</label>
+                                <input type="text" name="description" value = "<?=$wiki->description?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleDescription">Article Categorie:</label>
+                                <select name="categorieId" id="">
+                                    <?php foreach ($categories as $categorie) {?>
+                                        <option value="<?=$categorie->id?>" <?= ($categorie->categorie === $selectedCategorie->categorie) ?  'selected' : '' ?>><?=$categorie->categorie?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleDescription">Article Tags:</label>
+                                <select name="tagId[]" id = "tag" autocomplete="off" multiple>
+                                    <?php foreach ($tags as $tag) {?>
+                                        <option value="<?=$tag->id?>" <?= in_array($tag->tag, $selectedTags) ? 'selected' :'' ?> ><?=$tag->tag?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleContent">Article Content:</label>
+                                <!-- <textarea name="contenue"  id="tiny" required></textarea> -->
+                                <textarea name="contenue" id="" cols="30" rows="10"><?=$wiki->contenue?></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleImage">Article Image:</label>
+                                <input type="file" name="file" value="<?=$wiki->image_path?>" accept = ".jpg, .png, jpeg, .gif">
+                                <input type="hidden" name="idWiki" value="<?=$wiki->id?>" accept = ".jpg, .png, jpeg, .gif">
+                            </div>     
+
+                            <div class="form-group">  
+                                <h1></h1>  
+                                <button type="submit">Edit Article</button>
+                            </div>                           
+                
+                        </form>
+                        <?php }else {?>
                         <form action="addwiki" method="POST" enctype="multipart/form-data" autocomplete="off">
                             <div class="form-group">
                                 <label for="articleTitle">Article Title:</label>
@@ -90,14 +139,16 @@
                             <div class="form-group">
                                 <label for="articleImage">Article Image:</label>
                                 <input type="file" name="file" accept = ".jpg, .png, jpeg, .gif">
-
                             </div>     
 
-                            
+                            <div class="form-group">  
+                                <h1></h1>  
                                 <button type="submit">Add New Article</button>
-                                                      
+                            </div>                           
                 
                         </form>
+                        <?php } ?>
+                        
                     </section>
                         </div> 
                     </div>                           
