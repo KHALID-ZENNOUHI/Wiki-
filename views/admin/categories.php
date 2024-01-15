@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Charts</title>
+    <title>Wiki™</title>
 
     <!-- Fontfaces CSS-->
     <link href="assets/assetsAdmin/css/font-face.css" rel="stylesheet" media="all">
@@ -57,8 +57,8 @@
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
                                 <div class = "table-data__tool">
-                                <h3 class="title-5 m-b-35">data ressources</h3>
-                                <a href="#addCategorie" class="btn btn-success m-b-35" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Categories</span></a>
+                                <h3 class="title-5 m-b-35">Data Categories</h3>
+                                <a href="#addCategorie" class="au-btn au-btn-icon au-btn--blue" data-toggle="modal"><i class="zmdi zmdi-plus"></i><span>Add New Categories</span></a>
                                 </div>
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">

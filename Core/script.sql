@@ -16,7 +16,7 @@ create table categories(
 
 create table tags(
     id int primary key AUTO_INCREMENT,
-    tag varchar(255)
+    tag varchar(255) not null
 );
 
 create table wikis(
@@ -38,4 +38,4 @@ create table wikis_tags(
     foreign key (id_wiki) REFERENCES wikis(id) ON DELETE CASCADE ON UPDATE CASCADE,
     id_tag int,
     foreign key (id_tag) references tags(id) ON DELETE CASCADE ON UPDATE CASCADE
-)
+)wikis_tags

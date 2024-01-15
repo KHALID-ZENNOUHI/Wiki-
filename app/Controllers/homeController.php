@@ -35,11 +35,13 @@ class homeController extends controller
 
     public function dashboard()
     {
-        $wikiCount = $this->wiki->countWiki();
-        $categorieCount = $this->categories->countCategorie();
-        $tagCount = $this->tags->countTag();
-        $userCount = $this->user->countUser();
-        $this->render('admin/dashboard', ['wikiCount' => $wikiCount, 'userCount' => $userCount, 'tagCount' => $tagCount, 'categorieCount' => $categorieCount]);
+        if (isset($_SESSION['id']) && $_SESSION['role'] === 'admin') {
+            $wikiCount = $this->wiki->countWiki();
+            $categorieCount = $this->categories->countCategorie();
+            $tagCount = $this->tags->countTag();
+            $userCount = $this->user->countUser();
+            $this->render('admin/dashboard', ['wikiCount' => $wikiCount, 'userCount' => $userCount, 'tagCount' => $tagCount, 'categorieCount' => $categorieCount]);
+        }else $this->home();
     }
 
 
@@ -95,5 +97,11 @@ class homeController extends controller
         $tags = $this->wiki_tag->displayWikiTags($idWiki);
         $categorie = $this->wiki->displayCategorieWiki($idWiki);
         $this->render('clients/wikicontent', ['wiki' => $wiki, 'tags' => $tags, 'categorie' => $categorie]);
+    }
+
+    public function wikis()
+    {
+        $wikis = $this->wiki->display();
+        $this->render('admin/wikis', ['wikis' => $wikis]);
     }
 }

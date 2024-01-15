@@ -46,7 +46,7 @@
                                 <!-- <img src="assets/assetsAdmin/images/icon/logo.png" alt=""> -->
                                 <h1>Wiki™</h1>
                                 <?php if(!empty($_SESSION['error'])){?>
-                                    <h1><?php echo $_SESSION['error'];?></h1>
+                                    <h1><?php echo $_SESSION['error'];unset($_SESSION['error']);?></h1>
                                 <?php } ?>                               
                             </a>
                         </div>
@@ -73,7 +73,7 @@
                                         <input type="checkbox" name="aggree">Agree the terms and policy
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name = "register">register</button>
+                                <button class="btn btn-danger btn-block m-b-20" type="submit" name = "register">register</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>

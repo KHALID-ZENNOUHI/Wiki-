@@ -27,6 +27,11 @@ $route->post('/addwiki', wikiController::class, 'add');
 $route->post('/editwiki', wikiController::class, 'update');
 $route->get('/wikicontent', homeController::class, 'wikicontent');
 $route->get('/dashboard', homeController::class, 'dashboard');
+$route->get('/delete', wikiController::class, 'delete');
+$route->post('/search', wikiController::class, 'search');
+$route->get('/wikis', homeController::class, 'wikis');
+$route->get('/archived', wikiController::class, 'archived');
+$route->get('/archivedwikis', wikiController::class, 'archivedwikis');
 
 
 

@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 		<link rel="stylesheet" href="assets/assetsClient/css/main.css" />
-		<script src="sweetalert2.all.min.js"></script>
 	</head>
 	<body>
 
@@ -96,8 +95,8 @@
 										<?php 
 										if (isset($wikis)) {
 											foreach ($wikis as $wiki) {?>
-											<article>
-											<a href="#" class="image"><img src="assets/assetsClient/images/<?= $wiki->image_path?>" idth="416" height="256" alt="" /></a>
+											<article class = "articles">
+											<a href="#" class="image"><img src="assets/assetsClient/images/<?= $wiki->image_path?>" width="416" height="256" alt="" /></a>
 											<h3><?= $wiki->title?></h3>
 											<p><?= $wiki->description?></p>
 											<ul class="actions">
@@ -118,11 +117,12 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/assetsClient/js/jquery.min.js"></script>
-			<script src="assets/assetsClient/js/skel.min.js"></script>
-			<script src="assets/assetsClient/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/assetsClient/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/assetsClient/js/main.js"></script>
+		<script src="assets/assetsClient/js/search.js"></script>
+		<script src="assets/assetsClient/js/jquery.min.js"></script>
+		<script src="assets/assetsClient/js/skel.min.js"></script>
+		<script src="assets/assetsClient/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/assetsClient/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/assetsClient/js/main.js"></script>
 
 	</body>
 </html>

@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Calendar</title>
+    <title>Wiki™</title>
 
     <!-- Fontfaces CSS-->
     <link href="assets/assetsAdmin/css/font-face.css" rel="stylesheet" media="all">
@@ -74,7 +74,7 @@
                     <div class="container-fluid">
                         <div class="d-flex justify-content-between">
                             <h3 class="title-5 m-b-35">Tags</h3>
-                            <a href="#addModal" class="btn btn-success m-b-35" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Tags</span></a>
+                            <a href="#addModal" class="btn btn-blue m-b-35" data-toggle="modal"><i class="zmdi zmdi-plus"></i> <span>Add New Tags</span></a>
                         </div>
                         <div class="row">
                         <table class="table table-borderless table-data3">

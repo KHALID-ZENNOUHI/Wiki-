@@ -27,12 +27,12 @@
                                 <i class="fas fa-table"></i>Tags</a>
                         </li>
                         <li>
-                            <a href="category.php">
+                            <a href="wikis">
                                 <i class="far fa-check-square"></i>Wikis</a>
                         </li>
                         <li>
-                            <a href="subcategory.php">
-                                <i class="fas fa-calendar-alt"></i>Subcategory</a>
+                            <a href="archivedwikis">
+                                <i class="fas fa-calendar-alt"></i>Archived Wikis</a>
                         </li>
                         
                         

@@ -5,7 +5,6 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/assetsClient/css/main.css" />
-		<script src="sweetalert2.all.min.js"></script>
 	</head>
 	<body>
 
@@ -35,7 +34,10 @@
 									<?php } ?>
 									<h1></h1>
 									<?php if (isset($_SESSION['id'])) {?>
-										<li><a href="/viewWikiadd?id=<?= $wiki->id?>" class="button">Edit Article</a></li>
+										<ul style = "display : flex; gap:10px; list-style: none;	">
+											<li><a href="/viewWikiadd?id=<?= $wiki->id?>" class="button">Edit Article</a></li>
+											<li><a href="/delete?id=<?= $wiki->id?>" class="button">Delete Article</a></li>
+										</ul>
 									<?php }?>
 									
 

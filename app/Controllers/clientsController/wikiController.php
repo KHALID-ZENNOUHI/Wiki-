@@ -63,7 +63,7 @@ class wikiController extends homeController
             {   
         extract($_POST);
         $image = $this->uploadImage();
-        $tagIds = is_array($tagId) ? $tagId : [$tagId]; // Ensure $tagId is an array
+        $tagIds = is_array($tagId) ? $tagId : [$tagId]; 
 
         $this->wiki->add($title, $description, $contenue, $categorieId, $image, $tagIds);
 
@@ -85,7 +85,32 @@ class wikiController extends homeController
     public function delete()
     {
         $id = $_GET['id'];
-        $this->wiki->delete($title, $description, $contenue, $categorieId, $image);
-        header('location:/viewWikiadd');
+        $this->wiki->delete($id);
+        $wikis = $this->wiki->displayByIdUser();
+        $this->render('clients/home',['wikis' => $wikis]);
+    }
+
+    public function search()
+    {
+        $data_js = file_get_contents("php://input");
+        $data = json_decode($data_js, true);
+        $searchResults = $this->wiki->search($data['article'], $data['categorie']);
+
+        // Send the search results as a JSON response
+        header('Content-Type: application/json');
+        echo json_encode($searchResults);
+    }
+
+    public function archived()
+    {
+        $id = $_GET['id'];
+        $this->wiki->archived($id);
+        $this->wikis();
+    }
+
+    public function archivedWikis()
+    {
+        $wikis = $this->wiki->archivedWikis();
+        $this->render('admin/archivedwikis',['wikis' => $wikis]);
     }
 }

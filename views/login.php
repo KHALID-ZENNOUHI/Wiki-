@@ -46,7 +46,7 @@
                                 <!-- <img src="images/icon/logo.png" alt="CoolAdmin"> -->
                                 <h1>Wiki™</h1>
                                 <?php if(!empty($_SESSION['error'])){?>
-                                    <h1><?php echo $_SESSION['error'];?></h1>
+                                    <h1><?php echo $_SESSION['error']; unset($_SESSION['error']);?></h1>
                                 <?php } ?>    
                             </a>
                         </div>
@@ -68,7 +68,7 @@
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name = "login">sign in</button>
+                                <button class="btn btn-danger btn-block" type="submit" name="login">Sign In</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>

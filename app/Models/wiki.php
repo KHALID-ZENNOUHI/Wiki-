@@ -14,7 +14,7 @@ class Wiki
 
     public function display()
     {
-        $stm = $this->db->getPDO()->query("SELECT * FROM wikis ORDER BY id DESC");
+        $stm = $this->db->getPDO()->query("SELECT * FROM wikis WHERE delete_at IS NULL ORDER BY id DESC");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
@@ -22,7 +22,7 @@ class Wiki
     public function displayByIdUser()
     {
         $idUser  = $_SESSION['id'];
-        $stm = $this->db->getPDO()->query("SELECT * FROM wikis  where id_user = $idUser ORDER BY id DESC");
+        $stm = $this->db->getPDO()->query("SELECT * FROM wikis  where id_user = $idUser and delete_at IS NULL ORDER BY id DESC");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
@@ -79,11 +79,36 @@ class Wiki
         $stm->bindValue(':id', $id, PDO::PARAM_INT);
         $stm->execute();
     }
+
     public function countWiki()
     {
         $stm = $this->db->getPDO()->query("SELECT COUNT(id) FROM wikis");
         $stm->execute();
         return $stm->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function search($title, $categorie)
+    {
+        $stm = $this->db->getPDO()->prepare("SELECT * FROM wikis JOIN categories ON wikis.id_categorie = categories.id WHERE wikis.title LIKE :title  AND categories.categorie LIKE :categorie");
+        $stm->bindValue(':title','%' . $title . '%', PDO::PARAM_STR);
+        $stm->bindValue(':categorie','%' . $categorie . '%', PDO::PARAM_STR);
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function archived($id)
+    {
+        $stm = $this->db->getPDO()->prepare("UPDATE wikis SET delete_at = :delete_at where id = :id");
+        $stm->bindValue(':delete_at',date('Y-m-d'), PDO::PARAM_STR);
+        $stm->bindValue(':id', $id, PDO::PARAM_INT);
+        $stm->execute();
+    }
+
+    public function archivedWikis()
+    {
+        $stm = $this->db->getPDO()->query("SELECT * FROM wikis WHERE delete_at IS NOT NULL ORDER BY id DESC");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

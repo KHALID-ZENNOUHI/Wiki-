@@ -34,4 +34,14 @@ class wiki_tag
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function search($title, $categorie, $tag)
+    {
+        $stm = $this->db->getPDO()->prepare("SELECT * FROM wikis_tags JOIN tags ON wikis_tags.id_tag = tags.id JOIN wikis ON wikis_tags.id_wiki = wikis.id JOIN categories ON categories.id = wikis.id_categorie WHERE wikis.title LIKE :title AND categories.categorie LIKE :categorie AND tags.tag LIKE :tag;");
+        $stm->bindValue(':title','%' . $title . '%', PDO::PARAM_STR);
+        $stm->bindValue(':categorie','%' . $categorie . '%', PDO::PARAM_STR);
+        $stm->bindValue(':tag','%' . $tag . '%', PDO::PARAM_STR);
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }
