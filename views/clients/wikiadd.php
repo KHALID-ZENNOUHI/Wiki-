@@ -81,8 +81,8 @@
 
                             <div class="form-group">
                                 <label for="articleContent">Article Content:</label>
-                                <!-- <textarea name="contenue"  id="tiny" required></textarea> -->
-                                <textarea name="contenue" id="" cols="30" rows="10"><?=$wiki->contenue?></textarea>
+                                <textarea name="contenue"  id="tiny"><?=$wiki->contenue?></textarea>
+                                <!-- <textarea name="contenue" id="" cols="30" rows="10"></textarea> -->
                             </div>
 
                             <div class="form-group">
@@ -131,8 +131,8 @@
 
                             <div class="form-group">
                                 <label for="articleContent">Article Content:</label>
-                                <!-- <textarea name="contenue"  id="tiny" required></textarea> -->
-                                <textarea name="contenue" id="" cols="30" rows="10"></textarea>
+                                <textarea name="contenue"  id="tiny"></textarea>
+                                <!-- <textarea name="contenue" id="" cols="30" rows="10"></textarea> -->
                             </div>
 
                             <div class="form-group">

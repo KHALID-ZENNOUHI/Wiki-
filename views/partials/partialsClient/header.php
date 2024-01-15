@@ -1,9 +1,9 @@
 <!-- Header -->
 <header id="header">
-		<a href="" class="logo">
+		<a href="/" class="logo">
 		<strong>Wiki™</strong></a>
 		<section class="search">
-			<form action="search" method="POST" style = "display : flex; justify-content: space-between;	"  oninput = search()>
+			<form action="search" method="POST" style = "display : flex; justify-content: space-between;"  oninput = search()>
 				<div class="form-group mb-2">
 					<input type="text" name="Articles" id="articlesInput" placeholder="Articles">
 				</div>

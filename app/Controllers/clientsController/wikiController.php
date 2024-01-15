@@ -60,7 +60,7 @@ class wikiController extends homeController
     }
 
     public function add()
-            {   
+    {   
         extract($_POST);
         $image = $this->uploadImage();
         $tagIds = is_array($tagId) ? $tagId : [$tagId]; 
@@ -75,7 +75,7 @@ class wikiController extends homeController
     {
         extract($_POST);
         $image = $this->uploadImage();
-        $this->wiki->update($idWiki, $title, $description, $contenue, $idCategorie, $image);
+        $this->wiki->update($idWiki, $title, $description, $contenue, $categorieId, $image);
         foreach ($tagId as $id) {
             $this->wiki_tag->update($idWiki, $id);
         }
